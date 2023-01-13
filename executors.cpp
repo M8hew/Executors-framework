@@ -224,3 +224,8 @@ T Future<T>::Get() {
     }
     return value_;
 }
+
+template <class T>
+void Future<T>::Run() {
+    value_ = fn_();
+}

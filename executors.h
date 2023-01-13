@@ -129,17 +129,9 @@ public:
     Future& operator=(const Future&) = default;
     Future& operator=(Future&&) = default;
 
-    T Get() {
-        Wait();
-        if (IsFailed()) {
-            rethrow_exception(GetError());
-        }
-        return value_;
-    }
+    T Get();
 
-    void Run() override {
-        value_ = fn_();
-    }
+    void Run() override;
 
 private:
     T value_;
